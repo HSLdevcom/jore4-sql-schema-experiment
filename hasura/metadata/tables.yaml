@@ -1,0 +1,29 @@
+- table:
+    schema: infrastructure_network
+    name: infrastructure_link
+  insert_permissions:
+  - role: anonymous
+    permission:
+      check: {}
+      columns:
+      - infrastructure_link_geog
+      backend_only: false
+  select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - infrastructure_link_geog
+      - infrastructure_link_id
+      filter: {}
+      allow_aggregations: true
+  update_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - infrastructure_link_geog
+      filter: {}
+      check: {}
+  delete_permissions:
+  - role: anonymous
+    permission:
+      filter: {}
