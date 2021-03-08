@@ -22,3 +22,12 @@ COMMENT ON COLUMN
 COMMENT ON COLUMN
   infrastructure_network.infrastructure_network_types.infrastructure_network_type_name IS
   'The name of the infrastructure network type, e.g. "road", "rail", "tram", "metro".';
+
+ALTER TABLE infrastructure_network.infrastructure_links
+  ADD COLUMN infrastructure_network_type_id uuid
+  NOT NULL
+  REFERENCES infrastructure_network.infrastructure_network_types
+  (infrastructure_network_type_id);
+COMMENT ON COLUMN
+  infrastructure_network.infrastructure_links.infrastructure_network_type_id IS
+  'The ID of the infrastructure network type describing this link.';
