@@ -31,3 +31,9 @@ ALTER TABLE infrastructure_network.infrastructure_links
 COMMENT ON COLUMN
   infrastructure_network.infrastructure_links.infrastructure_network_type_id IS
   'The ID of the infrastructure network type describing this link.';
+
+CREATE INDEX
+  infrastructure_links_infrastructure_network_type_id_fkey
+  ON
+  infrastructure_network.infrastructure_links
+  (infrastructure_network_type_id);
