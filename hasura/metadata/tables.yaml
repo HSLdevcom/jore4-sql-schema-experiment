@@ -2,15 +2,16 @@
     schema: infrastructure_network
     name: infrastructure_links
   object_relationships:
-  - name: infrastructure_network_type
+  - name: infrastructureNetworkTypeByInfrastructureNetworkType
     using:
-      foreign_key_constraint_on: infrastructure_network_type_id
+      foreign_key_constraint_on: infrastructure_network_type
   insert_permissions:
   - role: anonymous
     permission:
       check: {}
       columns:
       - infrastructure_link_geog
+      - infrastructure_network_type
       backend_only: false
   select_permissions:
   - role: anonymous
@@ -18,6 +19,7 @@
       columns:
       - infrastructure_link_geog
       - infrastructure_link_id
+      - infrastructure_network_type
       filter: {}
       allow_aggregations: true
   update_permissions:
@@ -25,6 +27,7 @@
     permission:
       columns:
       - infrastructure_link_geog
+      - infrastructure_network_type
       filter: {}
       check: {}
   delete_permissions:
@@ -38,33 +41,14 @@
   - name: infrastructure_links
     using:
       foreign_key_constraint_on:
-        column: infrastructure_network_type_id
+        column: infrastructure_network_type
         table:
           schema: infrastructure_network
           name: infrastructure_links
-  insert_permissions:
-  - role: anonymous
-    permission:
-      check: {}
-      columns:
-      - infrastructure_network_type_name
-      backend_only: false
   select_permissions:
   - role: anonymous
     permission:
       columns:
-      - infrastructure_network_type_id
-      - infrastructure_network_type_name
+      - infrastructure_network_type
       filter: {}
       allow_aggregations: true
-  update_permissions:
-  - role: anonymous
-    permission:
-      columns:
-      - infrastructure_network_type_name
-      filter: {}
-      check: {}
-  delete_permissions:
-  - role: anonymous
-    permission:
-      filter: {}
