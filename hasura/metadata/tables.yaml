@@ -68,3 +68,37 @@
   - role: anonymous
     permission:
       filter: {}
+- table:
+    schema: infrastructure_network
+    name: infrastructure_point_types
+  is_enum: true
+  array_relationships:
+  - name: infrastructure_points
+    using:
+      foreign_key_constraint_on:
+        column: infrastructure_point_type
+        table:
+          schema: infrastructure_network
+          name: infrastructure_points
+  select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - infrastructure_point_type_value
+      - infrastructure_point_type_comment
+      filter: {}
+- table:
+    schema: infrastructure_network
+    name: infrastructure_points
+  object_relationships:
+  - name: infrastructurePointTypeByInfrastructurePointType
+    using:
+      foreign_key_constraint_on: infrastructure_point_type
+  select_permissions:
+  - role: anonymous
+    permission:
+      columns:
+      - infrastructure_point_id
+      - infrastructure_point_type
+      - infrastructure_point_geom
+      filter: {}
