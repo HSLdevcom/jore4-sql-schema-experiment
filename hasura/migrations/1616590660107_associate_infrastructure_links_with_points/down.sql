@@ -1,0 +1,2 @@
+ALTER TABLE infrastructure_network.infrastructure_links DROP COLUMN infrastructure_begin_point_id;
+ALTER TABLE infrastructure_network.infrastructure_links DROP COLUMN infrastructure_end_point_id;
