@@ -101,10 +101,11 @@ Currently that name is set to `anonymous` in `docker-compose.yml` and in the com
 Keep using the same name unless you have a reason for renaming.
 The name is not visible in the GraphQL API.
 
-If the SQL schema generates a sensible default value for a column, e.g. for an ID column, do not allow inserts or updates for that column over the GraphQL API.
+If the SQL schema generates a default value that should always be used for a column, e.g. for an ID or for a creation timestamp, do not allow inserts or updates for that column over the GraphQL API.
 
-Do not allow inserting, updating or deleting data in reference tables ("enums") over the GraphQL API.
+Do not allow inserting, updating or deleting data in reference tables, i.e. "enum-like" tables, over the GraphQL API.
 Insert the values in a migration, instead.
+Proper [enums](https://www.postgresql.org/docs/12/datatype-enum.html) are hard to change even in the migration files so avoid using them.
 
 #### Incompatible SQL schema and metadata
 
