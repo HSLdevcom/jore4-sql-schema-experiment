@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS infrastructure_network.infrastructure_points;
+DROP TABLE IF EXISTS infrastructure_network.infrastructure_point_types;
